@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuzuru Store - Sistem Lelang TikTok Live Profesional</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 100px 20px 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      font-weight: 800;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .btn {
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: white;
+      color: #667eea;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: #667eea;
+      transform: translateY(-3px);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 80px 20px;
+      background: #f8f9fa;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #333;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #667eea;
+    }
+
+    .feature-card p {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* Demo Section */
+    .demo {
+      padding: 80px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .demo-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .demo-video {
+      background: rgba(255,255,255,0.1);
+      padding: 60px;
+      border-radius: 20px;
+      margin-top: 40px;
+      backdrop-filter: blur(10px);
+    }
+
+    .demo-video-placeholder {
+      background: rgba(0,0,0,0.3);
+      height: 400px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    /* Pricing Section */
+    .pricing {
+      padding: 80px 20px;
+      background: white;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .pricing-card {
+      background: white;
+      border: 3px solid #e0e0e0;
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      border-color: #667eea;
+    }
+
+    .pricing-card.featured {
+      border-color: #667eea;
+      border-width: 4px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.08) translateY(-10px);
+    }
+
+    .pricing-badge {
+      background: #ffd700;
+      color: #333;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .pricing-card .price {
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 20px 0;
+    }
+
+    .pricing-card .price small {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin: 30px 0;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .pricing-card.featured .pricing-features li {
+      border-bottom-color: rgba(255,255,255,0.2);
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: #2ecc71;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .pricing-card.featured .pricing-features li::before {
+      color: #ffd700;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 20px;
+      background: #f8f9fa;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .author-info h4 {
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .author-info p {
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    /* Contact/CTA Section */
+    .final-cta {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+    }
+
+    .final-cta h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .final-cta p {
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.2rem;
+    }
+
+    .contact-item i {
+      font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #2d3142;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      opacity: 0.8;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .subtitle {
+        font-size: 1.1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>🎯 Yuzuru Store</h1>
+      <p class="subtitle">Sistem Lelang TikTok Live Profesional dengan Extra Time System</p>
+      <div class="cta-buttons">
+        <a href="#pricing" class="btn btn-primary">Lihat Harga</a>
+        <a href="#features" class="btn btn-secondary">Pelajari Lebih Lanjut</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">Fitur Unggulan</h2>
+      <p class="section-subtitle">Sistem lelang paling canggih untuk TikTok Live Anda</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>Extra Time System</h3>
+          <p>Fitur waktu tambahan otomatis setelah timer habis untuk memberikan kesempatan terakhir kepada bidder</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🎮</span>
+          <h3>Control Panel Intuitif</h3>
+          <p>Dashboard lengkap untuk mengontrol lelang dengan mudah - Start, Stop, Reset, dan Next Round dalam satu panel</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>Real-time Leaderboard</h3>
+          <p>Tampilan leaderboard langsung yang update otomatis setiap bid masuk dengan animasi smooth</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🏆</span>
+          <h3>Winner Animation</h3>
+          <p>Animasi pemenang spektakuler dengan confetti dan efek visual yang memukau untuk penutup lelang</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🎨</span>
+          <h3>OBS Ready Widget</h3>
+          <p>Widget transparan siap pakai untuk OBS Studio dengan desain profesional dan responsif</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">💎</span>
+          <h3>Diamond Counter</h3>
+          <p>Penghitungan otomatis total diamond dari setiap gift dengan akurasi tinggi dan anti duplicate</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔄</span>
+          <h3>Multi-Round Support</h3>
+          <p>Jalankan multiple round lelang dalam satu session dengan tracking item yang mudah</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📱</span>
+          <h3>Responsive Design</h3>
+          <p>Tampilan optimal di semua ukuran layar - desktop, tablet, dan mobile</p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔒</span>
+          <h3>Secure & Reliable</h3>
+          <p>Sistem aman dengan database MySQL dan WebSocket real-time connection yang stabil</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section class="demo">
+    <div class="demo-content">
+      <h2 class="section-title">Lihat Cara Kerjanya</h2>
+      <p class="section-subtitle">Sistem yang powerful namun mudah digunakan</p>
+      
+      <div class="demo-video">
+        <div class="demo-video-placeholder">
+          🎬
+        </div>
+        <p style="margin-top: 20px; opacity: 0.9;">
+          Video demo akan segera hadir - Tunjukkan kepada calon pelanggan betapa mudahnya menggunakan sistem ini
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <h2 class="section-title">Paket Harga</h2>
+      <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan Anda</p>
+      
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Basic</h3>
+          <div class="price">Rp 500K<small>/setup</small></div>
+          <ul class="pricing-features">
+            <li>Full Source Code</li>
+            <li>Widget OBS Ready</li>
+            <li>Control Panel</li>
+            <li>Extra Time System</li>
+            <li>Dokumentasi Lengkap</li>
+            <li>Support 7 Hari</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Pesan Sekarang</a>
+        </div>
+
+        <div class="pricing-card featured">
+          <div class="pricing-badge">⭐ TERPOPULER</div>
+          <h3>Premium</h3>
+          <div class="price">Rp 800K<small>/setup</small></div>
+          <ul class="pricing-features">
+            <li>Semua Fitur Basic</li>
+            <li>Setup & Instalasi</li>
+            <li>Custom Domain</li>
+            <li>SSL Certificate</li>
+            <li>Customisasi Design</li>
+            <li>Support 30 Hari</li>
+            <li>Free Update 3 Bulan</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Pesan Sekarang</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <div class="price">Custom<small>/project</small></div>
+          <ul class="pricing-features">
+            <li>Semua Fitur Premium</li>
+            <li>Multi-User System</li>
+            <li>Advanced Analytics</li>
+            <li>White Label</li>
+            <li>Priority Support</li>
+            <li>Lifetime Updates</li>
+            <li>Training Session</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="container">
+      <h2 class="section-title">Apa Kata Mereka?</h2>
+      <p class="section-subtitle">Dipercaya oleh content creator dan seller TikTok Live</p>
+      
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "Sistem lelang dari Yuzuru Store benar-benar game changer! Extra time system-nya bikin lelang lebih seru dan viewer lebih engaged. Penjualan naik 3x lipat!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div class="author-info">
+              <h4>Andi Wijaya</h4>
+              <p>TikTok Seller - Fashion</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "Setup-nya mudah banget, widget OBS-nya keren dan profesional. Control panel-nya user friendly, bahkan orang awam bisa langsung pakai. Recommended!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div class="author-info">
+              <h4>Siti Rahma</h4>
+              <p>Content Creator</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "Support-nya responsif, sistemnya stabil. Udah pakai 3 bulan ga pernah error. Worth it banget dengan harganya. Terima kasih Yuzuru Store!"
+          </p>
+          <div class="testimonial-author">
+            <div class="author-avatar">B</div>
+            <div class="author-info">
+              <h4>Budi Santoso</h4>
+              <p>Live Streamer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="contact">
+    <div class="container">
+      <h2>Siap Meningkatkan Penjualan TikTok Live Anda?</h2>
+      <p>Hubungi kami sekarang dan dapatkan sistem lelang profesional untuk bisnis Anda</p>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <span>📱</span>
+          <span>WhatsApp: +62 899-6071-414</span>
+        </div>
+        <div class="contact-item">
+          <span>✉️</span>
+          <span>Email: admin@yuzurustore.com</span>
+        </div>
+        <div class="contact-item">
+          <span>🌐</span>
+          <span>TikTok: @yuzurustore</span>
+        </div>
+      </div>
+
+      <div class="cta-buttons" style="margin-top: 40px;">
+        <a href="https://wa.me/628996071414" class="btn btn-primary" target="_blank">
+          💬 Chat WhatsApp
+        </a>
+        <a href="#pricing" class="btn btn-secondary">
+          📋 Lihat Paket Lagi
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Yuzuru Store - PT MyKisah Indonesia Jaya. All rights reserved.</p>
+      <p style="margin-top: 10px; font-size: 0.9rem;">
+        Powered by TikTok Live Connector | Built with ❤️ for Indonesian Sellers
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
